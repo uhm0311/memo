@@ -1,0 +1,1 @@
+vi /etc/rc.d/rc.local

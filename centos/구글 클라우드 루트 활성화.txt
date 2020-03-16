@@ -1,0 +1,4 @@
+sudo passwd
+su
+vi /etc/ssh/sshd_config
+service sshd restart

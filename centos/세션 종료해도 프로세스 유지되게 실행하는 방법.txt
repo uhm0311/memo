@@ -1,0 +1,5 @@
+nohup java -jar test.jar &
+disown
+exit
+
+ps -ef | grep test.jar
