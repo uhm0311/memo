@@ -1,0 +1,4 @@
+openssl pkcs12 -nokeys -in keystore.p12 -out certstore.pem
+openssl pkcs12 -nocerts -nodes -in keystore.p12 -out keystore.key
+
+vim /etc/nginx/conf.d/default.conf
