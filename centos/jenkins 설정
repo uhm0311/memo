@@ -7,3 +7,7 @@ if [[ $PROC == *"java -jar test.jar"* ]]; then
 else
   echo "Process is not running."
 fi
+
+BUILD_ID=dontKillMe nohup java -jar test.jar >> nohup.out 2>&1&
+ls
+disown
