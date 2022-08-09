@@ -1,3 +1,6 @@
+# reset /etc/resolv.conf
+sudo vim /etc/resolv.conf #remove kube-dns svc cluster address(maybe "nameserver 10.96.0.10") from /etc/resolv.conf.
+
 # yum install
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -49,9 +52,12 @@ FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
 
-sudo kubeadm join ...
+sudo kubeadm join ... #copy and paste kubeadm join command.
 
 mkdir -p ~/.kube
-vim ~/.kube/config
+vim ~/.kube/config # copy and paste kube config.
 
 export KUBECONFIG=$HOME/.kube/config
+
+# all node
+sudo vim /etc/resolv.conf #insert kube-dns svc cluster address(maybe "nameserver 10.96.0.10") to /etc/resolv.conf.
