@@ -25,7 +25,11 @@ export K8S_VERSION=1.18.0
 sudo yum install -y kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
 
 # master node
+## 1.17.0+
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+## 1.17.0-
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
 rm -rf $HOME/.kube
 mkdir -p $HOME/.kube
