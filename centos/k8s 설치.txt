@@ -64,6 +64,7 @@ EOF
 
 ## 1.17.0-
 sudo vim /etc/sysctl.conf # net.ipv4.conf.all.rp_filter = 1
+sudo sysctl -p
 
 sudo kubeadm join ... #copy and paste kubeadm join command.
 
