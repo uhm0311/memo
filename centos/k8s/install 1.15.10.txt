@@ -33,7 +33,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
 
 sudo vim /etc/sysctl.conf # net.ipv4.conf.all.rp_filter = 1
-kubectl apply -f kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
 
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
