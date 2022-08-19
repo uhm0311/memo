@@ -46,7 +46,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 ## 1.17.0-
 sudo vim /etc/sysctl.conf # net.ipv4.conf.all.rp_filter = 1
 kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+kubectl apply -f https://raw.githubusercontent.com/uhm0311/memo/master/centos/k8s/calico.yaml
 
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
