@@ -25,14 +25,6 @@ export K8S_VERSION=1.18.0
 sudo yum install -y kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
 
 # master node
-sudo mkdir -p /run/flannel
-cat <<EOF | sudo tee /run/flannel/subnet.env
-FLANNEL_NETWORK=10.244.0.0/16
-FLANNEL_SUBNET=10.244.0.1/24
-FLANNEL_MTU=1450
-FLANNEL_IPMASQ=true
-EOF
-
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 rm -rf $HOME/.kube
@@ -42,6 +34,14 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
 
 # 1.17.0+
+sudo mkdir -p /run/flannel
+cat <<EOF | sudo tee /run/flannel/subnet.env
+FLANNEL_NETWORK=10.244.0.0/16
+FLANNEL_SUBNET=10.244.0.1/24
+FLANNEL_MTU=1450
+FLANNEL_IPMASQ=true
+EOF
+
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 # 1.17.0-
