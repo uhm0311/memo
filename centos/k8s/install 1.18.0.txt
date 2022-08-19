@@ -19,17 +19,12 @@ sudo ip link set cni0 down && sudo ip link set flannel.1 down
 sudo ip link delete cni0 && sudo ip link delete flannel.1
 sudo kubeadm reset
 
-sudo yum remove -y kubectl kubelet kubeadm
-
 export K8S_VERSION=1.18.0
+sudo yum remove -y kubectl kubelet kubeadm
 sudo yum install -y kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
 
 # master node
-## 1.17.0+
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-
-## 1.17.0-
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 
 rm -rf $HOME/.kube
 mkdir -p $HOME/.kube
@@ -37,7 +32,6 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
 
-## 1.17.0+
 sudo mkdir -p /run/flannel
 cat <<EOF | sudo tee /run/flannel/subnet.env
 FLANNEL_NETWORK=10.244.0.0/16
@@ -45,19 +39,14 @@ FLANNEL_SUBNET=10.244.0.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-## 1.17.0-
-sudo vim /etc/sysctl.conf # net.ipv4.conf.all.rp_filter = 1
-kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply -f https://raw.githubusercontent.com/uhm0311/memo/master/centos/k8s/calico.yaml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
 
 # worker node
 
-## 1.17.0+
 sudo mkdir -p /run/flannel
 cat <<EOF | sudo tee /run/flannel/subnet.env
 FLANNEL_NETWORK=10.244.0.0/16
@@ -65,10 +54,6 @@ FLANNEL_SUBNET=10.244.0.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
-
-## 1.17.0-
-sudo vim /etc/sysctl.conf # net.ipv4.conf.all.rp_filter = 1
-sudo sysctl -p
 
 sudo kubeadm join ... #copy and paste kubeadm join command.
 
