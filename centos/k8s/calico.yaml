@@ -200,6 +200,8 @@ spec:
         - name: calico-node
           image: quay.io/calico/node:v3.1.7
           env:
+            - name: FELIX_HEALTHPORT
+              value: "19099"
             # Use Kubernetes API as the backing datastore.
             - name: DATASTORE_TYPE
               value: "kubernetes"
