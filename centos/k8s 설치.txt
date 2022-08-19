@@ -20,7 +20,9 @@ sudo ip link delete cni0 && sudo ip link delete flannel.1
 sudo kubeadm reset
 
 sudo yum remove -y kubectl kubelet kubeadm
-sudo yum install -y kubectl-1.18.0 kubelet-1.18.0 kubeadm-1.18.0
+
+export K8S_VERSION=1.18.0
+sudo yum install -y kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
 
 # master node
 sudo mkdir -p /run/flannel
@@ -39,7 +41,13 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
 
+# 1.17.0+
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+# 1.17.0-
+kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
 
