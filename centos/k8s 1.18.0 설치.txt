@@ -19,8 +19,8 @@ sudo ip link set cni0 down && sudo ip link set flannel.1 down
 sudo ip link delete cni0 && sudo ip link delete flannel.1
 sudo kubeadm reset
 
-sudo yum remove kubectl kubelet kubeadm
-sudo yum install kubectl-1.18.0 kubelet-1.18.0 kubeadm-1.18.0
+sudo yum remove -y kubectl kubelet kubeadm
+sudo yum install -y kubectl-1.18.0 kubelet-1.18.0 kubeadm-1.18.0
 
 # master node
 sudo mkdir -p /run/flannel
