@@ -12,8 +12,8 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 
 # node reset
-sudo rm -rf /etc/cni/net.d
 sudo rm -f /run/flannel/subnet.env
+sudo rm -rf /etc/cni/net.d
 sudo rm -rf $HOME/.kube
 sudo ip link set cni0 down && sudo ip link set flannel.1 down 
 sudo ip link delete cni0 && sudo ip link delete flannel.1
@@ -40,7 +40,7 @@ FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.19.1/Documentation/kube-flannel.yml
 
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
