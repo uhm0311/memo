@@ -20,6 +20,6 @@ sudo docker kill $(docker ps -q)
 sudo docker rm -f $(docker ps -a -q)
 sudo docker volume rm $(docker volume ls -q)
 sudo docker rmi -f $(docker images -a -q)
-sudo systemctl docker stop
+sudo systemctl stop docker
 sudo rm -rf /var/lib/docker
-sudo systemctl docker start
+sudo systemctl start docker
