@@ -1,21 +1,17 @@
 sudo vim /var/lib/kubelet/config.yaml
 
-- before
-```
+# before
 evictionHard:
   imagefs.available: 15%
   memory.available: 100Mi
   nodefs.available: 10%
   nodefs.inodesFree: 5%
-```
 
--after
-```
+# after
 evictionHard:
   imagefs.available: 1%
   memory.available: 100Mi
   nodefs.available: 1%
   nodefs.inodesFree: 1%
-```
 
 systemctl restart kubelet
