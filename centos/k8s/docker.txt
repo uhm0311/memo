@@ -1,3 +1,4 @@
+# install docker ce
 sudo yum remove -y docker \
                   docker-client \
                   docker-client-latest \
@@ -13,3 +14,12 @@ sudo yum-config-manager \
 sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo systemctl start docker
 docker --version
+
+# remove all docker files
+sudo docker kill $(docker ps -q)
+sudo docker rm -f $(docker ps -a -q)
+sudo docker volume rm $(docker volume ls -q)
+sudo docker rmi -f $(docker images -a -q)
+sudo systemctl docker stop
+sudo rm -rf /var/lib/docker
+sudo systemctl docker start
