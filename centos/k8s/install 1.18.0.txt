@@ -21,7 +21,7 @@ sudo kubeadm reset
 
 export K8S_VERSION=1.18.0
 sudo yum remove -y kubectl kubelet kubeadm
-sudo yum install -y kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
+sudo yum install -y kubernetes-cni-0.8.7 kubectl-$K8S_VERSION kubelet-$K8S_VERSION kubeadm-$K8S_VERSION
 
 # master node
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
