@@ -55,7 +55,7 @@ FLANNEL_IPMASQ=true
 EOF
 
 sudo kubeadm token create --print-join-command # master
-sudo kubeadm join <master node ip:6443> --token <Token> --discovery-token-ca-cert-hash sha256:<Hash> # worker
+sudo kubeadm join ... # worker
 
 mkdir -p ~/.kube
 vim ~/.kube/config # copy and paste kube config.
