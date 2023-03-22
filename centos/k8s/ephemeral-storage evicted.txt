@@ -14,4 +14,4 @@ evictionHard:
   nodefs.available: 1%
   nodefs.inodesFree: 1%
 
-systemctl restart kubelet
+sudo systemctl restart kubelet
