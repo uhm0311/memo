@@ -54,7 +54,8 @@ FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
 
-sudo kubeadm join ... #copy and paste kubeadm join command.
+sudo kubeadm token create --print-join-command # master
+sudo kubeadm join ... # worker
 
 mkdir -p ~/.kube
 vim ~/.kube/config # copy and paste kube config.
