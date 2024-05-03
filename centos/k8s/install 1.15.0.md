@@ -43,6 +43,8 @@ sudo rm -rf /usr/bin/kubelet
 sudo rm -rf /usr/bin/kubectl
 ```
 
+# install
+
 ## install cni plugins
 
 ```bash
@@ -81,6 +83,8 @@ sudo systemctl restart kubelet
 
 # master node
 
+## kubeadm init
+
 ```bash
 sudo modprobe br_netfilter
 sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
@@ -89,6 +93,14 @@ sudo rm -rf /var/lib/etcd
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
+## edit kubelet config
+
+```bash
+sudo vim /var/lib/kubelet/config.yaml
+```
+
+## copy kubectl config
+
 ```bash
 rm -rf $HOME/.kube
 mkdir -p $HOME/.kube
@@ -96,6 +108,8 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
 ```
+
+## config flannel
 
 ```bash
 sudo mkdir -p /run/flannel
@@ -120,6 +134,8 @@ watch -n 1 kubectl get nodes
 
 # worker node
 
+## config flannel
+
 ```bash
 sudo mkdir -p /run/flannel
 cat <<EOF | sudo tee /run/flannel/subnet.env
@@ -130,9 +146,13 @@ FLANNEL_IPMASQ=true
 EOF
 ```
 
+## join cluster
+
 ```bash
 sudo kubeadm join ...
 ```
+
+## copy kubectl config
 
 ```bash
 mkdir -p ~/.kube
