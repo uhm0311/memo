@@ -183,8 +183,6 @@ FLANNEL_SUBNET=10.244.0.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
-
-sudo kubeadm token create --print-join-command
 ```
 
 ## install flannel
@@ -194,6 +192,12 @@ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.13.0/Do
 
 watch -n 1 kubectl get pods -A
 watch -n 1 kubectl get nodes
+```
+
+## create join token
+
+```bash
+sudo kubeadm token create --print-join-command
 ```
 
 # worker node
