@@ -117,8 +117,11 @@ RELEASE_VERSION="v0.4.0"
 curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service
 sudo mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
 sudo systemctl daemon-reload
+
+sudo modprobe br_netfilter
+sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
+sudo rm -rf /var/lib/etcd
 ```
 
 # master node
@@ -126,10 +129,6 @@ sudo systemctl daemon-reload
 ## kubeadm init
 
 ```bash
-sudo modprobe br_netfilter
-sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
-sudo rm -rf /var/lib/etcd
-
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
