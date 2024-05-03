@@ -110,7 +110,7 @@ curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_
 DOWNLOAD_DIR="/usr/local/bin"
 sudo mkdir -p "$DOWNLOAD_DIR"
 
-RELEASE="v1.15.10"
+RELEASE="v1.15.12"
 ARCH="amd64"
 cd $DOWNLOAD_DIR
 sudo curl -L --remote-name-all https://dl.k8s.io/release/${RELEASE}/bin/linux/${ARCH}/{kubeadm,kubelet,kubectl}
