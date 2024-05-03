@@ -8,7 +8,7 @@ https://docs.docker.com/engine/install/centos/
 sudo vim /etc/resolv.conf
 ```
 
-# node reset
+# reset kubernetes
 
 ```bash
 sudo rm -f /run/flannel/subnet.env
@@ -20,7 +20,7 @@ sudo kubeadm reset
 sudo kubeadm reset --force
 ```
 
-## remove deprecated k8s repository
+## remove deprecated kubernetes repository
 
 ```bash
 sudo rm -rf /etc/yum.repos.d/kubernetes.repo
