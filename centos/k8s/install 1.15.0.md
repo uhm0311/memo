@@ -84,8 +84,8 @@ sudo systemctl restart kubelet
 ```bash
 sudo modprobe br_netfilter
 sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
-
 sudo rm -rf /var/lib/etcd
+
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
