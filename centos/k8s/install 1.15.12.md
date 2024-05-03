@@ -32,12 +32,17 @@ sudo yum remove -y docker \
                   docker-latest-logrotate \
                   docker-logrotate \
                   docker-engine
+
 sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
-sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo yum remove -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+export DOCKER_VERSION="18.09"
+sudo yum install -y docker-ce-$DOCKER_VERSION docker-ce-cli-$DOCKER_VERSION containerd.io-$DOCKER_VERSION docker-compose-plugin-$DOCKER_VERSION
+
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
