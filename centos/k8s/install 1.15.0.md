@@ -16,6 +16,7 @@ sudo rm -rf /etc/cni/net.d
 sudo rm -rf $HOME/.kube
 sudo ip link set cni0 down && sudo ip link set flannel.1 down
 sudo ip link delete cni0 && sudo ip link delete flannel.1
+
 sudo kubeadm reset
 sudo kubeadm reset --force
 ```
