@@ -35,10 +35,14 @@ sudo mkdir -p "$DOWNLOAD_DIR"
 ## remove installed k8s
 
 ```bash
-yum erase -y kubeadm
-yum erase -y kubelet
-yum erase -y kubectl
-yum erase -y cri-tools
+sudo yum erase -y kubeadm
+sudo yum erase -y kubelet
+sudo yum erase -y kubectl
+sudo yum erase -y cri-tools
+
+sudo rm -rf /usr/local/bin/kubeadm
+sudo rm -rf /usr/local/bin/kubelet
+sudo rm -rf /usr/local/bin/kubectl
 ```
 
 ## install cni plugins
