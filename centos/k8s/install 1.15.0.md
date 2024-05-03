@@ -51,7 +51,7 @@ EOF
 
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo systemctl daemon-reload
-sudo systemctl start docker
+sudo systemctl restart docker
 
 docker --version
 ```
