@@ -85,6 +85,12 @@ FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
 
+sudo kubeadm token create --print-join-command
+```
+
+## install flannel
+
+```bash
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.13.0/Documentation/kube-flannel.yml
 
 watch -n 1 kubectl get pods -A
@@ -102,8 +108,7 @@ FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
 
-sudo kubeadm token create --print-join-command # master
-sudo kubeadm join ... # worker
+sudo kubeadm join ...
 
 mkdir -p ~/.kube
 vim ~/.kube/config # copy and paste kube config.
