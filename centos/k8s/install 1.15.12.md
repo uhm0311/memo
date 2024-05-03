@@ -139,6 +139,30 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 sudo vim /var/lib/kubelet/config.yaml
 ```
 
+### before
+
+```conf
+evictionHard:
+  imagefs.available: 15%
+  memory.available: 100Mi
+  nodefs.available: 10%
+  nodefs.inodesFree: 5%
+```
+
+### after
+
+```conf
+evictionHard:
+  imagefs.available: 1%
+  memory.available: 1Mi
+  nodefs.available: 1%
+  nodefs.inodesFree: 1%
+```
+
+```bash
+sudo systemctl restart kubelet
+```
+
 ## copy kubectl config
 
 ```bash
