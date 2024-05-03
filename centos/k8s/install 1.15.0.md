@@ -43,6 +43,7 @@ sudo yum erase -y cri-tools
 sudo rm -rf /usr/local/bin/kubeadm
 sudo rm -rf /usr/local/bin/kubelet
 sudo rm -rf /usr/local/bin/kubectl
+sudo rm -rf /opt/cni/bin
 ```
 
 ## install cni plugins
