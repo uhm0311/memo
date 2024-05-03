@@ -38,7 +38,7 @@ sudo yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-cat > /etc/docker/daemon.json <<EOF
+sudo bash -c "cat > /etc/docker/daemon.json" <<EOF
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
