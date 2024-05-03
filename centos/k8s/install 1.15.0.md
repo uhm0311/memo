@@ -21,6 +21,38 @@ sudo kubeadm reset
 sudo kubeadm reset --force
 ```
 
+## reset docker
+
+```bash
+sudo yum remove -y docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo systemctl start docker
+docker --version
+```
+
+## remove all docker files
+
+```bash
+sudo docker kill $(docker ps -q)
+sudo docker rm -f $(docker ps -a -q)
+sudo docker volume rm $(docker volume ls -q)
+sudo docker rmi -f $(docker images -a -q)
+sudo systemctl stop docker
+sudo rm -rf /var/lib/docker
+sudo systemctl start docker
+```
+
 ## remove deprecated kubernetes repository
 
 ```bash
