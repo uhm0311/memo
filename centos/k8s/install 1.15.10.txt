@@ -1,8 +1,8 @@
 # install docker
 https://docs.docker.com/engine/install/centos/
 
-# reset /etc/resolv.conf
-sudo vim /etc/resolv.conf #remove kube-dns svc cluster address(maybe "nameserver 10.96.0.10") from /etc/resolv.conf.
+# reset /etc/resolv.conf : remove kube-dns svc cluster address(maybe "nameserver 10.96.0.10") from /etc/resolv.conf.
+sudo vim /etc/resolv.conf
 
 # remove deprecated k8s repository
 sudo rm -rf /etc/yum.repos.d/kubernetes.repo
