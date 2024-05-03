@@ -36,20 +36,8 @@ sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
+
 sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-sudo bash -c "cat > /etc/docker/daemon.json" <<EOF
-{
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2"
-}
-EOF
-
-sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
@@ -110,7 +98,7 @@ curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_
 DOWNLOAD_DIR="/usr/local/bin"
 sudo mkdir -p "$DOWNLOAD_DIR"
 
-RELEASE="v1.15.12"
+RELEASE="v1.15.10"
 ARCH="amd64"
 cd $DOWNLOAD_DIR
 sudo curl -L --remote-name-all https://dl.k8s.io/release/${RELEASE}/bin/linux/${ARCH}/{kubeadm,kubelet,kubectl}
