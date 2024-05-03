@@ -225,7 +225,9 @@ sudo kubeadm join ...
 ```bash
 mkdir -p ~/.kube
 vim ~/.kube/config
+```
 
+```bash
 export KUBECONFIG=$HOME/.kube/config
 ```
 
