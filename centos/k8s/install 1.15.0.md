@@ -95,7 +95,9 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config
+```
 
+```bash
 sudo mkdir -p /run/flannel
 cat <<EOF | sudo tee /run/flannel/subnet.env
 FLANNEL_NETWORK=10.244.0.0/16
@@ -126,9 +128,13 @@ FLANNEL_SUBNET=10.244.0.1/24
 FLANNEL_MTU=1450
 FLANNEL_IPMASQ=true
 EOF
+```
 
+```bash
 sudo kubeadm join ...
+```
 
+```bash
 mkdir -p ~/.kube
 vim ~/.kube/config # copy and paste kube config.
 
