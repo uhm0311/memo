@@ -25,13 +25,6 @@ sudo kubeadm reset
 sudo rm -rf /etc/yum.repos.d/kubernetes.repo
 ```
 
-## mkdir
-
-```bash
-DOWNLOAD_DIR="/usr/local/bin"
-sudo mkdir -p "$DOWNLOAD_DIR"
-```
-
 ## remove installed k8s
 
 ```bash
@@ -63,6 +56,9 @@ curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_
 ## install kubeadm, kubelet, kubectl
 
 ```bash
+DOWNLOAD_DIR="/usr/local/bin"
+sudo mkdir -p "$DOWNLOAD_DIR"
+
 RELEASE="v1.15.0"
 ARCH="amd64"
 cd $DOWNLOAD_DIR
