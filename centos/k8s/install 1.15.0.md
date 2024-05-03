@@ -45,7 +45,7 @@ sudo rm -rf /usr/bin/kubelet
 sudo rm -rf /usr/bin/kubectl
 ```
 
-# install
+# install kubernetes
 
 ## install cni plugins
 
