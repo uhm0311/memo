@@ -162,7 +162,7 @@ vim ~/.kube/config # copy and paste kube config.
 export KUBECONFIG=$HOME/.kube/config
 ```
 
-# all node
+# config /etc/resolv.conf
 
 - insert kube-dns svc cluster address(maybe "nameserver 10.96.0.10") to /etc/resolv.conf.
 
