@@ -224,7 +224,7 @@ sudo kubeadm join ...
 
 ```bash
 mkdir -p ~/.kube
-vim ~/.kube/config # copy and paste kube config.
+vim ~/.kube/config
 
 export KUBECONFIG=$HOME/.kube/config
 ```
