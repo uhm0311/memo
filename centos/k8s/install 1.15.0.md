@@ -82,8 +82,13 @@ sudo systemctl restart kubelet
 # master node
 
 ```bash
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+sudo modprobe br_netfilter
+sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
 
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
+```bash
 rm -rf $HOME/.kube
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
