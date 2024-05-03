@@ -10,7 +10,7 @@ evictionHard:
 # after
 evictionHard:
   imagefs.available: 1%
-  memory.available: 100Mi
+  memory.available: 1Mi
   nodefs.available: 1%
   nodefs.inodesFree: 1%
 
