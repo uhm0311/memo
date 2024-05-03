@@ -40,8 +40,8 @@ sudo yum-config-manager \
 
 sudo yum remove -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-export DOCKER_VERSION="18.09"
-sudo yum install -y docker-ce-$DOCKER_VERSION docker-ce-cli-$DOCKER_VERSION containerd.io-$DOCKER_VERSION docker-compose-plugin-$DOCKER_VERSION
+export DOCKER_VERSION="18.09.9"
+sudo yum install -y docker-ce-$DOCKER_VERSION docker-ce-cli-$DOCKER_VERSION containerd.io docker-compose-plugin
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
