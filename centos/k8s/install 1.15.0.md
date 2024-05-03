@@ -44,6 +44,10 @@ sudo rm -rf /usr/local/bin/kubeadm
 sudo rm -rf /usr/local/bin/kubelet
 sudo rm -rf /usr/local/bin/kubectl
 sudo rm -rf /opt/cni/bin
+
+sudo rm -rf /usr/bin/kubeadm
+sudo rm -rf /usr/bin/kubelet
+sudo rm -rf /usr/bin/kubectl
 ```
 
 ## install cni plugins
@@ -64,6 +68,10 @@ ARCH="amd64"
 cd $DOWNLOAD_DIR
 sudo curl -L --remote-name-all https://dl.k8s.io/release/${RELEASE}/bin/linux/${ARCH}/{kubeadm,kubelet,kubectl}
 sudo chmod +x {kubeadm,kubelet,kubectl}
+
+sudo ln -s $DOWNLOAD_DIR/kubeadm /usr/bin/kubeadm
+sudo ln -s $DOWNLOAD_DIR/kubelet /usr/bin/kubelet
+sudo ln -s $DOWNLOAD_DIR/kubectl /usr/bin/kubectl
 
 RELEASE_VERSION="v0.4.0"
 curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service
