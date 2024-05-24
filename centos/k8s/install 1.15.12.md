@@ -237,3 +237,12 @@ export KUBECONFIG=$HOME/.kube/config
 ```bash
 sudo vim /etc/resolv.conf
 ```
+
+# config /etc/yum.conf
+
+- insert value `docker* containerd* kube*` to key `exclude`.
+- value of key `exclude` will ignored when command `yum update`.
+
+```bash
+sudo vim /etc/yum.conf
+```
