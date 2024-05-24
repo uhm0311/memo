@@ -1,6 +1,3 @@
-# install docker
-https://docs.docker.com/engine/install/centos/
-
 # reset /etc/resolv.conf
 - remove kube-dns svc cluster address(maybe "nameserver 10.96.0.10") from /etc/resolv.conf.
 
