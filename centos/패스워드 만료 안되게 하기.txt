@@ -1,0 +1,1 @@
+chage -E -1 -I 0 -m 0 -M 99999 <username>
