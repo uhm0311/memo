@@ -115,6 +115,8 @@ curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSIO
 sudo mkdir -p /etc/systemd/system/kubelet.service.d
 curl -sSL "https://raw.githubusercontent.com/kubernetes/release/${RELEASE_VERSION}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf" | sed "s:/usr/bin:${DOWNLOAD_DIR}:g" | sudo tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sudo systemctl daemon-reload
+sudo systemctl enable docker.service
+sudo systemctl enable kubelet.service
 
 sudo modprobe br_netfilter
 sudo bash -c "echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables"
