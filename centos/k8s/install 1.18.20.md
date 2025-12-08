@@ -30,7 +30,7 @@ sudo yum remove -y docker \
                   docker-logrotate \
                   docker-engine
 
-sudo yum install -y yum-utils conntrack
+sudo yum install -y yum-utils conntrack vim
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
