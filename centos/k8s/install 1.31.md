@@ -54,13 +54,13 @@ sudo systemctl enable --now kubelet
 
 ---
 
-- Master Node
+### Master Node
 
 ```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
 
-- Worker Node
+### Worker Node
 
 ```
 tbd...
