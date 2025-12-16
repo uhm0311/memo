@@ -24,9 +24,7 @@ net.ipv4.ip_forward                 = 1
 EOF
 
 sudo sysctl --system
-```
 
-```
 sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install -y containerd.io
 
@@ -35,9 +33,7 @@ containerd config default | sudo tee /etc/containerd/config.toml
 
 sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
 sudo systemctl enable --now containerd
-```
 
-```
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
