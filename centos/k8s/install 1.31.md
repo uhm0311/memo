@@ -50,9 +50,23 @@ EOF
 
 sudo dnf install -y kubelet kubeadm kubectl conntrack --disableexcludes=kubernetes
 sudo systemctl enable --now kubelet
+```
 
+---
+
+- Master Node
+
+```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 ```
+
+- Worker Node
+
+```
+tbd...
+```
+
+---
 
 ```
 mkdir -p $HOME/.kube
