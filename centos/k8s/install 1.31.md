@@ -73,6 +73,7 @@ watch -n 1 kubectl get nodes
 
 ```
 sudo kubeadm join ...
+sudo scp ...:/etc/kubernetes/admin.conf /etc/kubernetes/admin.conf
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
